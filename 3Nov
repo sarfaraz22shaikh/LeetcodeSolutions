@@ -1,0 +1,32 @@
+// Leetcode 796 solution 
+
+// in this question we have to shift the string  s to make it equal to goal
+// shift means pushing rightmost character of s to leftmost
+// in below code i have written two approaches to solve
+
+public class RotateString {
+    public static  String LeftRotate(String str){
+        return str.substring(1) + str.charAt(0);
+    }
+    public static void main(String[] args) {
+                String s = "abcde";
+                String goal = "cdeab";
+//
+//                if(s.length() != goal.length() ){
+//                    System.out.println(false);
+//                }
+//
+//                for(int i=0 ; i < s.length() ; i++){
+//                    if(s.equals(goal)){
+//                        System.out.println(true);
+//                    }
+//                    s = LeftRotate(s);
+//                }
+
+        // if perticular string added to itself it will contain all its roatation
+
+        if( s.length() == goal.length() && (s+s).contains(goal) ){
+            System.out.println(true);
+        }
+    }
+}
