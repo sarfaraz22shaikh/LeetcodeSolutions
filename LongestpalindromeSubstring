@@ -1,0 +1,41 @@
+import java.security.PublicKey;
+
+public class palindrome_inString {
+
+
+    public static String expansionfromcenter(String s , int left , int right){
+
+        while( left >= 0 && right<s.length() && s.charAt(left) == s.charAt(right) ){
+            left--;
+            right++;
+        }
+        return s.substring(left+1,right);
+
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+
+        String str = "babad";
+        String longest = "";
+        for( int i=0 ; i < str.length() - 1 ; i++ ){
+            // a character can be a part of odd length palindrome or even length ;
+            String evenpalindrome = expansionfromcenter(str,i,i+1);
+            String oddpalindrome = expansionfromcenter(str,i-1,i+1);
+            if(oddpalindrome.length() > longest.length() ){
+                longest = oddpalindrome;
+            }
+            if(evenpalindrome.length() > longest.length() ){
+                longest = evenpalindrome;
+            }
+
+        }
+
+        System.out.println(longest);
+
+
+    }
+}
