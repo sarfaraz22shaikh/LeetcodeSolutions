@@ -1,4 +1,16 @@
-import java.security.PublicKey;
+
+i applied a brute force approach first which take a time complexity of O(n3)
+which is preety straight forward i find all the substring and check wheather they are a palindrome or not 
+after that i learn from youtube and find out that 
+a character can be a part of old length palindrome or even length so for every character i check it wheather it from a 
+odd length palindrome or even length 
+
+
+
+
+
+
+
 
 public class palindrome_inString {
 
