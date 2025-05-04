@@ -1,0 +1,29 @@
+Given a list of dominoes, dominoes[i] = [a, b] is equivalent to dominoes[j] = [c, d] if and only if either (a == c and b == d), 
+or (a == d and b == c) - that is, one domino can be rotated to be equal to another domino.
+Return the number of pairs (i, j) for which 0 <= i < j < dominoes.length, and dominoes[i] is equivalent to dominoes[j].
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+APPROACH
+dominos[i][0] == dominos[i+1][0] && dominos[i][1] == dominos[i+1][1] aur iska vise vera 
+toh hume sum nikala iss umed per ke uper ke contidion equal hoge toh sum bhi same hoga per ye 
+this is not necessary to be true all the time toh ham map mein min( [0] , [1] ) * 10 + max( [0] + [1] )
+store kare kyu ke ( 2+3 == 4+1) per ye pair nhi bnate 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+class Solution {
+  public int numEquivDominoPairs(int[][] dominoes) {
+    int ans = 0;
+    Map<Integer, Integer> count = new HashMap<>();
+
+    for (int[] domino : dominoes) {
+      int key = Math.min(domino[0], domino[1]) * 10 + Math.max(domino[0], domino[1]);
+      ans += count.getOrDefault(key, 0);
+      count.merge(key, 1, Integer::sum);
+    }
+
+    return ans;
+  }
+}
